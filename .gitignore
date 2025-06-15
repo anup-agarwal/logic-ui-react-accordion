@@ -1,0 +1,15 @@
+# Node
+node_modules/
+dist/
+*.log
+.npm/
+
+# Build tools
+tsup.config.ts
+.vite/
+coverage/
+
+# IDEs and OS
+.vscode/
+.DS_Store
+.env*
