@@ -80,16 +80,3 @@ Ideal for devs who hate fighting CSS-in-JS libraries or component libraries that
 
 MIT © Anup Agarwal
 [anupagarwal.com](https://anupagarwal.com)
-
----
-
-## 💡 Want More?
-
-Coming soon from `@logicblocks`:
-
-* `@logicblocks/dialog`
-* `@logicblocks/tabs`
-* `@logicblocks/disclosure`
-* `@logicblocks/pin-input`
-
-Follow and ⭐ the repo to stay updated!
