@@ -1,6 +1,6 @@
 {
   "name": "@logicblocks/react-accordion",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A headless, fully controlled, unstyled React accordion component with maximum flexibility.",
   "main": "dist/Accordion.cjs",
   "module": "dist/Accordion.mjs",
