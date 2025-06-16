@@ -2,87 +2,69 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/anup-agarwal/logic-ui-react-accordion)](https://github.com/anup-agarwal/logic-ui-react-accordion/stargazers)
 
-# @logicblocks/accordion
+# @logicblocks/react-accordion
 
-A **headless**, **fully controlled**, and **unopinionated** React accordion component built with logic-first principles.  
-No styles. No theming. You control everything.
-
----
-
-## ✨ Features
-
-- ✅ **Fully controlled** via `currentIndex` + `onToggle`
-- ✅ **Supports single or multiple open panels**
-- ✅ Optional `collapseOthers` to close other panels automatically
-- ✅ **Zero styling** — use `className` and `style` freely
-- ✅ Works with **Tailwind**, **CSS Modules**, **Emotion**, or **vanilla CSS**
-- ✅ Accessible with proper ARIA roles
+A customizable React accordion component with **no built-in CSS** — completely style-agnostic and perfect for logic-only UI builds.
 
 ---
 
-## 📦 Installation
+## 🚀 Installation
+
+Using npm:
 
 ```bash
-npm install @logicblocks/accordion
+npm install @logicblocks/react-accordion
+```
+
+Using yarn:
+
+```bash
+yarn add @logicblocks/react-accordion
 ```
 
 ---
 
-## 🚀 Usage
-
-### 🔹 1. Inline Styles
-
-```tsx
-import { Accordion } from "@logicblocks/accordion";
-import { useState } from "react";
-
-const items = [
-  {
-    title: "Inline Panel 1",
-    Component: () => <p>Hello world</p>,
-  },
-  {
-    title: "Inline Panel 2",
-    Component: () => <p>More content</p>,
-  },
-];
-
-const App = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  return (
-    <Accordion
-      items={items}
-      currentIndex={activeIndex}
-      onToggle={setActiveIndex}
-      multiple={false}
-      containerStyle={{ border: "1px solid #ccc", padding: "10px" }}
-      itemStyle={{ marginBottom: "10px" }}
-      triggerStyle={{ background: "#eee", padding: "8px", fontWeight: "bold" }}
-      panelStyle={{ padding: "8px", background: "#fafafa" }}
-    />
-  );
-};
-```
+## 💡 Usage Examples
 
 ---
 
-### 🎨 2. Custom CSS Classes
+### 1️⃣ With CSS Classes
+
+### 📦 Example CSS
+```css
+/* accordion.css */
+
+.accordion-container {
+  border: 1px solid #ccc;
+  padding: 12px;
+}
+
+.accordion-item {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.accordion-trigger {
+  background: #f1f1f1;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.accordion-panel {
+  padding: 10px;
+  background: #fafafa;
+}
+```
 
 ```tsx
-import { Accordion } from "@logicblocks/accordion";
-import "./styles.css"; // Your CSS file
-import { useState } from "react";
+import React, { useState } from 'react';
+import { Accordion } from '@logicblocks/react-accordion';
+import './accordion.css';
 
 const items = [
-  {
-    title: "Custom Class Panel 1",
-    Component: () => <p>Styled by CSS</p>,
-  },
-  {
-    title: "Custom Class Panel 2",
-    Component: () => <p>Another styled panel</p>,
-  },
+  { title: 'Section 1', Component: () => <p>Content 1</p> },
+  { title: 'Section 2', Component: () => <p>Content 2</p> },
 ];
 
 const App = () => {
@@ -94,60 +76,71 @@ const App = () => {
       currentIndex={index}
       onToggle={setIndex}
       multiple
+      containerClassName="accordion-container"
       itemClassName="accordion-item"
       triggerClassName="accordion-trigger"
       panelClassName="accordion-panel"
     />
   );
 };
-```
 
-```css
-/* styles.css */
-.accordion-item {
-  border: 1px solid #888;
-  margin-bottom: 10px;
-}
-.accordion-trigger {
-  background: #222;
-  color: #fff;
-  padding: 10px;
-  width: 100%;
-  text-align: left;
-}
-.accordion-panel {
-  background: #f0f0f0;
-  padding: 10px;
-}
+export default App;
 ```
 
 ---
 
-### 💨 3. Tailwind CSS
+### 2️⃣ With Inline Styles
 
 ```tsx
-import { Accordion } from "@logicblocks/accordion";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { Accordion } from '@logicblocks/react-accordion';
 
 const items = [
-  {
-    title: "Tailwind Panel 1",
-    Component: () => <p className="text-gray-700">This is Tailwind!</p>,
-  },
-  {
-    title: "Tailwind Panel 2",
-    Component: () => <p className="text-blue-600">Tailwind rocks!</p>,
-  },
+  { title: 'Section 1', Component: () => <p>Inline 1</p> },
+  { title: 'Section 2', Component: () => <p>Inline 2</p> },
 ];
 
 const App = () => {
-  const [activeList, setActiveList] = useState<number[]>([]);
+  const [index, setIndex] = useState<number[]>([]);
 
   return (
     <Accordion
       items={items}
-      currentIndex={activeList}
-      onToggle={setActiveList}
+      currentIndex={index}
+      onToggle={setIndex}
+      multiple
+      containerStyle={{ border: '1px solid #ccc', padding: '12px' }}
+      itemStyle={{ marginBottom: '10px' }}
+      triggerStyle={{ background: '#eee', padding: '10px', fontWeight: 'bold' }}
+      panelStyle={{ padding: '10px', background: '#f9f9f9' }}
+    />
+  );
+};
+
+export default App;
+```
+
+---
+
+### 3️⃣ With Tailwind CSS (v3.4+)
+
+```tsx
+import React, { useState } from 'react';
+import { Accordion } from '@logicblocks/react-accordion';
+
+const items = [
+  { title: 'Tailwind 1', Component: () => <p className="p-4 text-gray-700">First</p> },
+  { title: 'Tailwind 2', Component: () => <p className="p-4 text-gray-700">Second</p> },
+];
+
+const App = () => {
+  const [index, setIndex] = useState<number[]>([]);
+
+  return (
+    <Accordion
+      items={items}
+      currentIndex={index}
+      onToggle={setIndex}
       multiple
       containerClassName="space-y-4"
       itemClassName="border border-gray-300 rounded"
@@ -156,30 +149,46 @@ const App = () => {
     />
   );
 };
+
+export default App;
 ```
 
 ---
 
-## 🔧 Props
+## 📦 Props
 
-| Prop                                                        | Type                                       | Description                             |
-|-------------------------------------------------------------|--------------------------------------------|-----------------------------------------|
-| `items`                                                     | `{ title: string, Component: React.FC }[]` | List of accordion sections              |
-| `currentIndex`                                              | `number` or `number[]`                     | Controlled index or list of indexes     |
-| `onToggle`                                                  | `(nextIndex: number or number[]) => void`  | Callback to control state externally    |
-| `multiple`                                                  | `boolean`                                  | Allow multiple panels open              |
-| `collapseOthers`                                            | `boolean`                                  | Collapse all others when one is toggled |
-| Styling props like `containerClassName`, `panelStyle`, etc. | `string` or `React.CSSProperties`          | Full styling control via props          |
+### ✅ Required Props
+
+- `items`: Array of accordion items:
+  - `title` (string): Section label
+  - `Component` (React.FC): Rendered content
+
+- `currentIndex`: Currently open index or array of indexes
+- `onToggle`: Callback to handle index changes
+
+### ⚙️ Optional Props
+
+- `multiple`: Allow multiple open panels
+- `collapseOthers`: When `multiple`, closes other panels automatically
+- `containerClassName`, `itemClassName`, `triggerClassName`, `panelClassName`: CSS class hooks
+- `containerStyle`, `itemStyle`, `triggerStyle`, `panelStyle`: Inline style hooks
 
 ---
 
-## 🧱 Philosophy
+## 🎨 Customization
 
-This package is part of the [@logicblocks](https://www.npmjs.com/org/logicblocks) ecosystem — focused on **clean logic** and **maximum styling freedom**.  
-Ideal for devs who hate fighting CSS-in-JS libraries or component libraries that lock down UI.
+This component is **100% unstyled** by default.  
+You decide everything — whether to use Tailwind, vanilla CSS, Chakra, Emotion, or inline styles.
 
 ---
 
-## 🪪 License
+## 🤝 Contributing
+
+Contributions are welcome!  
+Feel free to [open an issue](https://github.com/anup-agarwal/logic-ui-react-accordion/issues) or submit a pull request on [GitHub](https://github.com/anup-agarwal/logic-ui-react-accordion).
+
+---
+
+## 📄 License
 
 MIT License © [Anup Agarwal](https://github.com/anup-agarwal)
